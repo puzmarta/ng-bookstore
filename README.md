@@ -1,27 +1,87 @@
-# NgBookstore
+# Bookstore
+Bazowe repozytorium dla listy 5 (przedmiot "Projekt i implementacja systemów webowych").
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+## Instalacja narzędzi
+Do pracy w trybie developerskim niezbędny jest `nodeJS` w wersji 14 lub 16.
+Do zarządzania wersjam środowiska `nodeJS` dobrze jest użyć `nvm`:
 
-## Development server
+https://github.com/coreybutler/nvm-windows/releases
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Po zainstalowaniu `nvm` dostępna jest komenda CLI, przy pomocy której możemy zainstalować odpowiednią wersję `nodeJS`, np.:
 
-## Code scaffolding
+```
+nvm list available
+nvm install 18.18.0
+nvm use 18.18.0
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Po zainstalowaniu środowiska `nodeJS` dostępne będzie także narzędzie `npm`, którego użyjemy do zainstalowania Angular CLI:
 
-## Build
+```
+npm install -g @angular/cli
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Przygotowanie repozytorium do pracy
+Po sklonowaniu niniejszego repozytorium oraz po upewnieniu się, że zarówno `nodeJS` jak i `npm` są zainstalowane, należy, będąc wewnątrz katalogu z zawartością repozytorium, wykonać:
 
-## Running unit tests
+```
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Komenda ta spowoduje zainstalowanie niezbędnych zależności.
 
-## Running end-to-end tests
+## Uruchomienie backendu
+Po zainstalowaniu zależności możliwe jest uruchomienie backendu za pomocą następującej komendy:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm run backend:start
+```
 
-## Further help
+Nie należy zamykać terminala, na którym uruchomiliśmy backend.
+Zatrzymanie pracy backendu możliwe jest po wciśnięciu CTRL-C.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Uruchomienie frontendu w trybie develperskim
+Tryb developerski pozwala na szybki restart frondendu w celu natychmiastowej weryfikacji napisanego kodu.
+Uruchomienie frontendu następuje po wykonaniu następującej komendy:
+
+```
+ng serve -o
+```
+
+Frontend w trybie developerskim dostępny będzie pod adresem: http:\\localhost:4200
+Narzędzie `serve` monitoruje wszystkie pliki źródłowe i po wykryciu ich zmiany restartuje serwer oraz aplikację w przeglądarce.
+
+## Korzystanie z Angular CLI
+Jeśli zainstalowaliśmy Angular CLI globalnie (patrz wyżej), narzędzie to jest dostępne z linii poleceń poprzez wpisanie: `ng`.
+Alternatywnie, Angular CLI może być także uruchomiony za pośrednictwem `npm`:
+
+```
+npm run ng <parametry>
+```
+
+## Wykorzystanie backendu
+Backend wykorzystuje `json-server`, który serwuje zawartość pliku `backend/books.json`.
+
+Serwer uruchamia się pod adresem:
+
+http://localhost:3000/
+
+Serwer oferuje REST API dla dwóch kolekcji obiektów:
+
+* http://localhost:3000/api/books
+* http://localhost:3000/api/reviews
+
+w tym API do manipulacji pojedynczymi obiektami, np.:
+
+* http://localhost:3000/api/books/1
+* http://localhost:3000/api/reviews/2
+
+Serwer obsługuje metody GET, POST, PUT, DELETE oferując tym samym podstawowe operacje typu CRUD.
+
+Serwer obsługuje wyszukiwanie pełnotekstowe z wykorzystaniem parametru `q`:
+
+http://localhost:3000/api/books?q=Lem
+
+Serwer obsługuje wyszukiwanie wg wartości konkretnego pola, np.:
+
+http://localhost:3000/api/reviews?forBook=1

@@ -1,21 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BookListResolver } from './book-list.resolver';
+import { bookListResolver } from './book-list.resolver';
 import {BooksService} from "../services/books.service";
+import {ResolveFn} from "@angular/router";
 
 describe('BookListResolver', () => {
-  let resolver: BookListResolver;
+  const bookListResolver: ResolveFn<boolean> = (...resolverParameters) =>
+    TestBed.runInInjectionContext(() => bookListResolver(...resolverParameters));
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [
-        { provide: BooksService, useValue: {} }
-      ]
-    });
-    resolver = TestBed.inject(BookListResolver);
+    TestBed.configureTestingModule({});
   });
 
   it('should be created', () => {
-    expect(resolver).toBeTruthy();
+    expect(bookListResolver).toBeTruthy();
   });
 });
