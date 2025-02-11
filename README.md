@@ -2,7 +2,7 @@
 Bazowe repozytorium dla listy 5 (przedmiot "Projekt i implementacja systemów webowych").
 
 ## Instalacja narzędzi
-Do pracy w trybie developerskim niezbędny jest `nodeJS` w wersji 14 lub 16.
+Do pracy w trybie developerskim niezbędny jest `nodeJS` w wersji 22.
 Do zarządzania wersjam środowiska `nodeJS` dobrze jest użyć `nvm`:
 
 https://github.com/coreybutler/nvm-windows/releases
@@ -11,8 +11,8 @@ Po zainstalowaniu `nvm` dostępna jest komenda CLI, przy pomocy której możemy 
 
 ```
 nvm list available
-nvm install 18.18.0
-nvm use 18.18.0
+nvm install 22.14.0
+nvm use 22.14.0
 ```
 
 Po zainstalowaniu środowiska `nodeJS` dostępne będzie także narzędzie `npm`, którego użyjemy do zainstalowania Angular CLI:
