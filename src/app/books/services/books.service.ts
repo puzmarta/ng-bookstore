@@ -17,8 +17,12 @@ export class BooksService {
   }
 
 
-  getBookById(id: string): Observable<Book> {
+  getBookById(id: number): Observable<Book> {
     return this.http.get<Book>(`${booksApiPrefix}/${id}`);
+  }
+
+  updateBook(book: Book): Observable<Book> {
+    return this.http.put<Book>(`${booksApiPrefix}/${book.id}`, book);
   }
 
 }

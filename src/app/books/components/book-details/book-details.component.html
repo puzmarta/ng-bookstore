@@ -1,20 +1,26 @@
-<a routerLink="/books" class="btn btn-outline-primary mt-4">
+<article class="container my-4">
+
+<a routerLink="/books" class="btn btn-outline-primary mb-4">
   ← Back to list
 </a>
-
+<h2>Book details</h2>
 
 @if (book) {
-  <h2>Book details</h2>
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-body">
     <h2 class="card-title">{{ book.title }}</h2>
     <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
-    <h6 class="card-subtitle mb-2 text-muted"><strong>Year:</strong> {{ book.year }}</h6>
+    <h6 class="card-subtitle mb-2"><strong>Year:</strong> {{ book.year }}</h6>
     <p class="card-text">
       {{ book.description }}
     </p>
   </div>
 </div>
+
+<bs-create-review (reviewAdded)="reloadReviews()" class="mb-4"></bs-create-review>
+
+<div class="mt-4">
+
 <h3>Reviews</h3>
 @if(reviews && reviews.length > 0) {
   <div *ngFor="let review of reviews">
@@ -25,10 +31,12 @@
     <strong>No reviews yet</strong>
   </div>
 }
+</div>
+
 } @else {
   <ng-template>
     <h2>Book not found</h2>
   </ng-template>
 }
 
-
+</article>

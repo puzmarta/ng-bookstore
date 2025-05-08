@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Review } from '../../model/review';
 
 @Component({
   selector: 'bs-review',
@@ -8,9 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './review.component.scss'
 })
 export class ReviewComponent {
-  @Input() review!: {  id: number;
-    forBook: number;
-    title: string;
-    description: string;
-    rate: number;};
+  @Input() review!: Review;
 }

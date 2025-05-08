@@ -12,8 +12,12 @@ export class ReviewsService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getReviewsForBook(bookId: string): Observable<any[]> {
+  getReviewsForBook(bookId: number): Observable<any[]> {
     return this.http.get<any[]>(`${reviewsApiPrefix}?forBook=${bookId}`);
+  }
+
+  createReview(review: any): Observable<any> {
+    return this.http.post<any>(reviewsApiPrefix, review);
   }
 
 
