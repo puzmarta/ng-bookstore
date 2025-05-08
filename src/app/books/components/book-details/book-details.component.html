@@ -1,42 +1,43 @@
 <article class="container my-4">
 
-<a routerLink="/books" class="btn btn-outline-primary mb-4">
-  ← Back to list
-</a>
-<h2>Book details</h2>
+  <a routerLink="/books" class="btn btn-outline-primary mb-4">
+    ← Back to list
+  </a>
+  <h2>Book details</h2>
 
-@if (book) {
+  @if (book) {
   <div class="card mb-4">
     <div class="card-body">
-    <h2 class="card-title">{{ book.title }}</h2>
-    <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
-    <h6 class="card-subtitle mb-2"><strong>Year:</strong> {{ book.year }}</h6>
-    <p class="card-text">
-      {{ book.description }}
-    </p>
+      <h2 class="card-title">{{ book.title }}</h2>
+      <h6 class="card-subtitle mb-2 text-muted">{{ book.author }}</h6>
+      <h6 class="card-subtitle mb-2"><strong>Year:</strong> {{ book.year }}</h6>
+      <p class="card-text">
+        {{ book.description }}
+      </p>
+    </div>
   </div>
-</div>
 
-<bs-create-review (reviewAdded)="reloadReviews()" class="mb-4"></bs-create-review>
+  <bs-create-review (reviewAdded)="reloadReviews()"
+    class="mb-4"></bs-create-review>
 
-<div class="mt-4">
+  <div class="mt-4">
 
-<h3>Reviews</h3>
-@if(reviews && reviews.length > 0) {
-  <div *ngFor="let review of reviews">
-    <bs-review [review]="review"></bs-review>
+    <h3>Reviews</h3>
+    @if(reviews && reviews.length > 0) {
+    <div *ngFor="let review of reviews">
+      <bs-review [review]="review"></bs-review>
+    </div>
+    } @else {
+    <div class="alert alert-warning" role="alert">
+      <strong>No reviews yet</strong>
+    </div>
+    }
   </div>
-} @else {
-  <div class="alert alert-warning" role="alert">
-    <strong>No reviews yet</strong>
-  </div>
-}
-</div>
 
-} @else {
+  } @else {
   <ng-template>
     <h2>Book not found</h2>
   </ng-template>
-}
+  }
 
 </article>
